@@ -324,7 +324,8 @@ function easy_image_gallery() {
 			$image_link	= wp_get_attachment_image_src( $attachment_id, apply_filters( 'easy_image_gallery_linked_image_size', 'large' ) );
 			
 			// set image dimensions for anchor tag attribute
-			$image_dimensions	=	$image_link[1] .'x'. $image_link[2];
+			$image_width	=	$image_link[1];
+			$image_height	=	$image_link[2];
 			
 			$image_link	= $image_link[0];	
 
@@ -339,7 +340,7 @@ function easy_image_gallery() {
 			$rel = easy_image_gallery_count_images() > 1 ? 'rel="'. $lightbox .'[group]"' : 'rel="'. $lightbox .'"';
 
 			if ( easy_image_gallery_has_linked_images() )
-				$html = sprintf( '<li><a %s href="%s" class="%s" title="%s" data-size"%s"><i class="icon-view"></i><span class="overlay"></span>%s</a></li>', $rel, $image_link, $image_class, $image_caption, $image_dimensions, $image );
+				$html = sprintf( '<li><a %s href="%s" class="%s" title="%s" data-width="%s" data-height="%s"><i class="icon-view"></i><span class="overlay"></span>%s</a></li>', $rel, $image_link, $image_class, $image_caption, $image_width, $image_height, $image );
 			else
 				$html = sprintf( '<li>%s</li>', $image );
 
